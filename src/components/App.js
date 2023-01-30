@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 //Data
 import initialProducts from "../data/products";
 
@@ -14,10 +14,17 @@ import AboutPage from "../pages/AboutPage";
 //BS-Components
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
+import WarenkorbPage from "../pages/WarenkorbPage";
 
 export default function App() {
   let productsBackUp = initialProducts;
-  const [products, setProducts] = useState(initialProducts);
+  const [products, setProducts] = useState([]);
+
+  useState(()=>{
+    fetch('https://fakestoreapi.com/products')
+            .then(res=>res.json())
+            .then(json=>setProducts(json))
+  },[]);
 
   function filterProductsByCategory(category) {
     if (category === "kein Filter") {
@@ -59,7 +66,7 @@ export default function App() {
               <>
                 <Container>
                   <Navigation />
-                  <div>Dies wird meine WarenkorbKomponente</div>
+                  <WarenkorbPage />
                 </Container>
               </>
             }

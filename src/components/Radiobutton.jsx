@@ -5,18 +5,17 @@ export default function Radiobutton({
   label,
   handleFilterChange,
   name,
-  value
+  value,
+  checked
 }) {
-  const [isChecked, setIsChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(checked);
   return (
     <Form.Check
       name={name}
       type="radio"
       label={label}
       value={value}
-      onChange={(e) => {
-        console.log(e.target.value);
-        console.log(e.target.checked);
+      onChange={(e) => {       
         let isChecked = e.target.checked;
         setIsChecked(isChecked);
         handleFilterChange(label);

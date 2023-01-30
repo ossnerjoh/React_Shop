@@ -19,6 +19,7 @@ export default function Sidebar({ products, handleFilterChange }) {
           label="kein Filter"
           name="cat_filter"
           value="keinFilter"
+          checked={true}
           handleFilterChange={handleFilterChange}
         />
 
@@ -29,6 +30,7 @@ export default function Sidebar({ products, handleFilterChange }) {
               label={label}
               name="cat_filter"
               value={label}
+              checked={false}
               handleFilterChange={handleFilterChange}
             />
           );
