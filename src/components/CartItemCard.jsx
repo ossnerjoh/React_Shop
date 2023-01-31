@@ -1,6 +1,6 @@
 import React from "react";
 
-function CartItemCard({ product }) {
+function CartItemCard({ product, handleDelete, id }) {
   return (
     <div className="card my-3">
       <div className="row g-0">
@@ -14,7 +14,16 @@ function CartItemCard({ product }) {
           </div>
         </div>
         <div className="col-1 d-flex align-items-center">
-          <button className="btn btn-outline-danger p-1"> ❌ </button>
+          <button
+            className="btn btn-outline-danger p-1"
+            onClick={() => {
+              handleDelete(id);
+            }}
+          >
+            <span role="img" aria-label="delete">
+              ❌
+            </span>
+          </button>
         </div>
       </div>
     </div>

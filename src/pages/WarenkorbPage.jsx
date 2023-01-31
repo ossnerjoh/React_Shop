@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 import CartItemCard from "../components/CartItemCard";
 
-function WarenkorbPage({ cartItems }) {
+function WarenkorbPage({ cartItems, handleDelete }) {
   return (
-    <div>
+    <div className="container">
       {cartItems.map((cartItem) => {
-        console.log(cartItem);
-        return <CartItemCard product={cartItem} />;
+        return (
+          <CartItemCard
+            product={cartItem}
+            id={cartItem.id}
+            handleDelete={handleDelete}
+          />
+        );
       })}
     </div>
   );

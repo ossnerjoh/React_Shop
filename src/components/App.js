@@ -51,8 +51,8 @@ export default function App() {
       image: "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
       rating: {
         rate: 3.9,
-        count: 120,
-      },
+        count: 120
+      }
     },
     {
       id: 2,
@@ -65,10 +65,21 @@ export default function App() {
         "https://fakestoreapi.com/img/71-3HjGNDUL._AC_SY879._SX._UX._SY._UY_.jpg",
       rating: {
         rate: 4.1,
-        count: 259,
-      },
-    },
+        count: 259
+      }
+    }
   ]);
+
+  function deleteFromCart(id) {
+    //delete to do
+    console.log(id + "deleted");
+    setCartItems(
+      cartItems.filter((cartItem) => {
+        console.log(cartItem.id);
+        return cartItem.id !== id;
+      })
+    );
+  }
   function addToCart(id) {
     setCartItems([...cartItems, ...products.filter((p) => p.id === id)]);
   }
@@ -101,7 +112,10 @@ export default function App() {
               <>
                 <Container>
                   <Navigation />
-                  <WarenkorbPage cartItems={cartItems} />
+                  <WarenkorbPage
+                    cartItems={cartItems}
+                    handleDelete={deleteFromCart}
+                  />
                 </Container>
               </>
             }
