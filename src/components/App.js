@@ -17,6 +17,7 @@ import Row from "react-bootstrap/Row";
 import WarenkorbPage from "../pages/WarenkorbPage";
 
 export default function App() {
+  //products to render -------------------------
   let productsBackUp = initialProducts;
   const [products, setProducts] = useState([]);
 
@@ -36,6 +37,12 @@ export default function App() {
         })
       );
     }
+  }
+
+  //products in Cart
+  const [cartItems, setCartItems] = useState([1, 2]);
+  function addToCart(id){
+    setCartItems([...cartItems, ...products.filter((p)=>p.id===id)]);
   }
 
   return (
@@ -66,7 +73,7 @@ export default function App() {
               <>
                 <Container>
                   <Navigation />
-                  <WarenkorbPage />
+                  <WarenkorbPage cartItems={cartItems} />
                 </Container>
               </>
             }

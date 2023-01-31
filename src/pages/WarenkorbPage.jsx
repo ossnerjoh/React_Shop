@@ -1,8 +1,12 @@
-import React from 'react'
+import React, { useState } from 'react';
+import CartItemCard from '../components/CartItemCard';
 
-function WarenkorbPage() {
+function WarenkorbPage({ cartItems }) {
+
   return (
-    <div>Dies wird meine WarenkorbKomponente (from separate File)</div>
+    <div>
+     { cartItems.map(cartItem => {<CartItemCard />})}
+    </div>
   )
 }
 
